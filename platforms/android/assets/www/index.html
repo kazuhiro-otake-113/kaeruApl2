@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+
+  <!-- JS dependencies (order matters!) -->
+  <script src="scripts/platformOverrides.js"></script>
+  <script src="lib/onsen/js/onsenui.js"></script>
+
+  <!-- CSS dependencies -->
+  <link rel="stylesheet" href="lib/onsen/css/onsenui.css" />
+  <link rel="stylesheet" href="lib/onsen/css/onsen-css-components-blue-basic-theme.css" />
+
+  <title>Onsen UI Navigation</title>
+
+  <!-- App init -->
+  <script src="js/app.js"></script>
+
+  <style>
+    .picture {
+      background-color: #ccc;
+      width: 50px;
+      height: 50px;
+    }
+
+    .label {
+      font-size: 12px;
+      color: #999;
+      float: right;
+      padding-top: 10px;
+    }
+
+    #main-list div.right,
+    #detail-list div.right {
+      display: inline;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- Cordova reference -->
+  <script src="cordova.js"></script>
+  <script src="scripts/index.js"></script>
+  <!-- -->
+
+  <ons-navigator id="myNavigator">
+    <ons-page id="menu-page">
+      <ons-toolbar>
+        <div class="center">メニュー</div>
+      </ons-toolbar>
+
+      <ons-list id="main-list">
+        <!-- This list will be filled on page initialization -->
+      </ons-list>
+    </ons-page>
+  </ons-navigator>
+
+    <ons-template id="ctc_phiro.html">
+        <ons-page id="ctc_phiro-page">
+            <ons-toolbar>
+                <div class="left">
+                    <ons-back-button>Back</ons-back-button>
+                </div>
+                <div class="center">CTC企業理念</div>
+            </ons-toolbar>
+            <img src="images/CTC_rinen.PNG" algin="center" width="381" height="399">
+        </ons-page>
+    </ons-template>
+
+    <ons-template id="emp_support.html">
+         <ons-page id="emp_support-page">
+　          <ons-toolbar>
+                <div class="left">
+                    <ons-back-button>Back</ons-back-button>
+                </div>
+                <div class="center">従業員支援プログラム</div>
+            </ons-toolbar>
+         </ons-page>
+    </ons-template>
+
+    <ons-template id="kaeru_ref.html">
+        <ons-page id="kaeru-page">
+            <ons-toolbar>
+                <div class="left">
+                    
+                    <ons-back-button>Back</ons-back-button>
+                </div>
+                <div class="center">何時にカエル</div>
+            </ons-toolbar>
+            <ons-list id="kaeru-list">
+                <!-- This list will be filled on page initialization -->
+            </ons-list>
+        </ons-page>
+    </ons-template>
+
+    <ons-template id="kintai_record.html">
+        <ons-page id="kintai_record-page">
+            <ons-toolbar>
+                <div class="left">
+                    <ons-back-button>Back</ons-back-button>
+                </div>
+                <div class="center">出退勤</div>
+            </ons-toolbar>
+            <br /><br /><br />
+            <div class="btn" style="text-align:center">
+                <ons-button modifier="cta" onclick="app.attendance()">出勤</ons-button>
+                <ons-button modifier="cta" onclick="app.attendance()">退勤</ons-button>
+            </div>
+        </ons-page>
+    </ons-template>
+
+</body>
+</html>

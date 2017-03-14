@@ -1,0 +1,28 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-ms-azure-mobile-apps": {
+            "PACKAGE_NAME": "io.onsen.sampleapp"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "io.onsen.sampleapp"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "io.onsen.sampleapp"
+        },
+        "cordova-sqlite-storage": {
+            "PACKAGE_NAME": "io.onsen.sampleapp"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "io.onsen.sampleapp"
+        }
+    }
+}
