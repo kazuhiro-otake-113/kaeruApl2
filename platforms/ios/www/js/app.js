@@ -12,7 +12,7 @@
       //日時、位置情報取得
       var attendDate = new Date();
       var year = attendDate.getFullYear();
-      var month = attendDate.getMonth();
+      var month = attendDate.getMonth()+1;
       var day = attendDate.getDate();
       var week = attendDate.getDay();
       var youbi = new Array("日", "月", "火", "水", "木", "金", "土", "月");
@@ -53,6 +53,19 @@
  app.pageTrans = function(){
     document.querySelector('#myNavigator').pushPage('kaeru_reg.html');
  }
+
+ app.getToday = function(){
+    var now = new Date();
+    var year = now.getFullYear();
+    var mon = now.getMonth()+1;
+    var day = now.getDate();
+    var you = now.getDay();
+    var youbi = new Array("日", "月", "火", "水", "木", "金", "土", "月");
+    
+    var s = year + "年" + month + "月" + day + "日" + youbi[week] + "曜日"
+    
+    return s;
+};
 
   var menu_items = [
     {
@@ -125,7 +138,7 @@
     },
     {
         emp_name: '大竹　一弘',
-        emp_time: '--:--',
+        emp_time: '未登録',
         emp_desc: 'ビジネスソリューション推進課'
     }
   ];
@@ -155,7 +168,7 @@
 
       document.querySelector('#main-list').innerHTML = onsListContent;
 
-    } else if (page.id === "kaeru-page") {
+    } else if (page.id === "kaeru-ref-page") {
         var onsListContent = document.querySelector('#kaeru-list').innerHTML;
 
         kaeru_items.forEach(function (kaeru_item, index) {
@@ -177,6 +190,11 @@
         });
 
         document.querySelector('#kaeru-list').innerHTML = onsListContent;
+
+    } else if (page.id === "kaeru-reg-page") {
+        var viewToday = document.querySelector('#view_today').innerHTML;
+        viewToday = app.getToday();
+        document.querySelector('#view_today').innerHTML = viewToday;
     }
 
   });
