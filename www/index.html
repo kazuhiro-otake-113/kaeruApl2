@@ -56,23 +56,41 @@
 
 </head>
 
-<body>
+<body bgcolor="#FFFFFF">
   <!-- Cordova reference -->
   <script src="cordova.js"></script>
   <script src="scripts/index.js"></script>
 
-  <!-- 　-->
-  <ons-navigator id="myNavigator">
-    <ons-page id="menu-page">
-      <ons-toolbar>
-        <div class="center">メニュー</div>
-      </ons-toolbar>
+    <!-- トップ　ページ　-->
+    <ons-navigator id="myNavigator">
+            <ons-page id="top-page">
+                <div style="text-align: center">
+                    <h2>デモアプリケーション</h2>
+                    <img src="images/CTC_logo.png" width="300" height="180" />
+                    <br><br><br>
+                    <ons-button modifier="cta" onclick="app.pagePush('menu.html')">
+                        ユーザ認証する
+                    </ons-button>
+                </div>
+            </ons-page>
+    </ons-navigator>
 
-      <ons-list id="main-list">
-        <!-- This list will be filled on page initialization -->
-      </ons-list>
-    </ons-page>
-  </ons-navigator>
+    <!-- メニュー　ページ　-->
+    <ons-template id="menu.html">
+        <ons-page id="menu-page">
+            <ons-toolbar>
+                <div class="center">メニュー</div>
+                <div class="right">
+                    <ons-toolbar-button onclick="app.pagePop()">
+                        <ons-icon icon="sign-out">ﾛｸﾞｱｳﾄ</ons-icon>
+                    </ons-toolbar-button>
+                </div>
+            </ons-toolbar>
+            <ons-list id="main-list">
+                <!-- This list will be filled on page initialization -->
+            </ons-list>
+        </ons-page>
+    </ons-template>
 
     <!-- CTC企業理念　ページ -->
     <ons-template id="ctc_phiro.html">
@@ -104,8 +122,8 @@
                 <div class="left"><ons-back-button>Back</ons-back-button></div>
                 <div class="center">何時にカエル</div>
                 <div class="right">
-                    <ons-toolbar-button onclick="app.pageTrans()">
-                        <ons-icon icon="ion-compose"></ons-icon>
+                    <ons-toolbar-button onclick="app.pagePush('kaeru_reg.html')">
+                        <ons-icon icon="ion-compose"><font size="3"> 登録</font></ons-icon>
                     </ons-toolbar-button>
                 </div>
             </ons-toolbar>
@@ -132,7 +150,7 @@
             <div id="timeInput">
                 <form>
                     <label for="time">退社予定時間</label><br>
-                    <input type="time" data-clear-btn="true" name="time-2" id="time-2" value="">
+                    <input type="time" size="14" data-clear-btn="true" name="time-2" id="time-2" value="">
                 </form>
             </div>
             

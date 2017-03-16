@@ -50,8 +50,12 @@
       app.alertMessage();
   };
  
- app.pageTrans = function(){
-    document.querySelector('#myNavigator').pushPage('kaeru_reg.html');
+ app.pagePush = function(pageTo){
+    document.querySelector('#myNavigator').pushPage(pageTo);
+ }
+
+ app.pagePop = function(){
+    document.querySelector('#myNavigator').popPage();
  }
 
  app.getToday = function(){
