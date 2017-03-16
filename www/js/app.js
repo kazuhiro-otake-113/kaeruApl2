@@ -1,8 +1,25 @@
 (function(){
   'use strict';
   var page;
+  var today;
 
   window.app = {};
+
+  //ログイン
+  app.login = function(){
+      //client.login("aad").then(function(){ app.pagePush('menu.html'); }, authError);
+      app.pagePush('menu.html');
+  };
+
+  //ログアウト
+  app.logout = function(){
+      //client.logout().then(function(){ app.pagePop(); }, authError);
+      app.pagePop();
+  };
+
+  app.authError = function() {
+      ons.notification.alert('認証失敗!');
+  };
 
   app.alertMessage = function(){
       ons.notification.alert('現在使用できません!');
@@ -45,18 +62,14 @@
            document.querySelector('#myNavigator').pushPage('kintai_record.html');
        }
   };
-
-  app.showDetail_kaeru = function (index) {
-      app.alertMessage();
-  };
  
  app.pagePush = function(pageTo){
     document.querySelector('#myNavigator').pushPage(pageTo);
- }
+ };
 
  app.pagePop = function(){
     document.querySelector('#myNavigator').popPage();
- }
+ };
 
  app.getToday = function(){
     var now = new Date();
@@ -66,9 +79,7 @@
     var you = now.getDay();
     var youbi = new Array("日", "月", "火", "水", "木", "金", "土", "月");
     
-    var s = year + "年" + month + "月" + day + "日" + youbi[week] + "曜日"
-    
-    return s;
+    today = '2017年3月16日（木）';
 };
 
   var menu_items = [
@@ -197,8 +208,8 @@
 
     } else if (page.id === "kaeru-reg-page") {
         var viewToday = document.querySelector('#view_today').innerHTML;
-        viewToday = app.getToday();
-        document.querySelector('#view_today').innerHTML = viewToday;
+        app.getToday();
+        document.querySelector('#view_today').innerHTML = today;
     }
 
   });

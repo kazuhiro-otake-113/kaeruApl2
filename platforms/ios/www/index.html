@@ -66,9 +66,10 @@
             <ons-page id="top-page">
                 <div style="text-align: center">
                     <h2>デモアプリケーション</h2>
-                    <img src="images/CTC_logo.png" width="300" height="180" />
+                    <img src="images/CTC_logo.png" width="250" height="150" />
                     <br><br><br>
-                    <ons-button modifier="cta" onclick="app.pagePush('menu.html')">
+                    <!-- <ons-button modifier="cta" onclick="app.pagePush('menu.html')"> -->
+                    <ons-button modifier="cta" onclick="app.login()"> 
                         ユーザ認証する
                     </ons-button>
                 </div>
@@ -81,7 +82,7 @@
             <ons-toolbar>
                 <div class="center">メニュー</div>
                 <div class="right">
-                    <ons-toolbar-button onclick="app.pagePop()">
+                    <ons-toolbar-button onclick="app.logout()">
                         <ons-icon icon="sign-out">ﾛｸﾞｱｳﾄ</ons-icon>
                     </ons-toolbar-button>
                 </div>
@@ -101,7 +102,7 @@
                 </div>
                 <div class="center">CTC企業理念</div>
             </ons-toolbar>
-            <img src="images/CTC_rinen.PNG" algin="center" width="381" height="399">
+            <img src="images/CTC_rinen.PNG" algin="center" width="370" height="410">
         </ons-page>
     </ons-template>
 
@@ -141,12 +142,6 @@
                 <div class="center">カエル時間を登録</div>
             </ons-toolbar>
             <p id="view_today" style="text-align:center"></p>
-            <!--
-            <div data-role="fieldcontain">
-                <label>日付</label><br>
-                <input id="name" type="datetime-local" name="name" value="" />
-            </div>
-            -->
             <div id="timeInput">
                 <form>
                     <label for="time">退社予定時間</label><br>
