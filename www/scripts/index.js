@@ -17,8 +17,14 @@ var today;
         document.addEventListener( 'resume', onResume.bind( this ), false );
 
         // MobileApps接続
-        //client = new WindowsAzure.MobileServiceClient(mAppUrl);
-    };
+        client = new WindowsAzure.MobileServiceClient(mAppUrl)
+            .then(function(){
+                ons.notification.alert('Azure接続成功!');
+            },
+            function(){
+                ons.notification.alert('Azure接続エラー!');
+            });
+        };
 
     function onPause() {
         // TODO: This application has been suspended. Save application state here.

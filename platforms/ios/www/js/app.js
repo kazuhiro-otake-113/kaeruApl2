@@ -1,6 +1,8 @@
 (function(){
   'use strict';
-  var page; 
+  var page;
+  var today;
+
   window.app = {};
 
   //ログイン
@@ -77,8 +79,79 @@
     var you = now.getDay();
     var youbi = new Array("日", "月", "火", "水", "木", "金", "土", "月");
     
-    var s = year + "年" + month + "月" + day + "日" + youbi[week] + "曜日"
+    var hiduke = year + "年" + mon + "月" + day + "日 " + youbi[you] + "曜日";
+    return hiduke;
 };
+
+app.depTimeReg = function(){
+    //画面入力値を取得
+    var time = $('#depTime').val();
+
+    //登録・更新
+    if(time === ""){
+        ons.notification.alert('時間を設定してください');
+    } else {
+        alert(time);
+        /*
+        //テーブル参照
+        var table = client.getTable('--操作対象テーブル--');
+        
+        //対象ユーザ（今回は決め打ちで対応）
+        var targetUser = {
+            tUser: 'z2h3542',
+            tName: '大竹 一弘'
+        };
+
+        //登録、更新日付
+        var cDate = app.getToday();
+
+        //テーブル登録 or 更新
+        table
+            .where({empId: targetUser.tUser,depDate: cDate })
+            .read()
+            .then(
+                //read成功時の処理
+                function(results){
+                    if(results.length > 0){
+                        //データが存在する場合、更新
+                        var updateItem = {
+                            id: '更新対象のID results[0].id',
+                            depTime: time
+                        };
+                        table
+                            .update(updateItem)
+                            .done(
+                                function(){
+                                    //更新成功時、何もしない
+                                },dataAccessfailure);
+                    } else {
+                        //データが存在しない場合、登録
+                        var insertItem = {
+                            empId: targetUser.tUser,
+                            depTime: time,
+                            depDate: cDate,
+                            order: 1
+                        };
+                        table
+                            .insert()
+                            .done(
+                                function(){
+                                    //登録成功時、何もしない
+                                },dataAccessfailure);
+                    }
+                //read失敗時の処理
+            },dataAccessfailure);
+    */
+    }
+ };
+
+ app.selectAttendTime = function(){
+    alert("selectAttend");
+ };
+ 
+ app.dataAccessfailure = function(error){
+    ons.notification.alert('データ操作エラー');
+ };
 
   var menu_items = [
     {
@@ -184,6 +257,9 @@
     } else if (page.id === "kaeru-ref-page") {
         var onsListContent = document.querySelector('#kaeru-list').innerHTML;
 
+        //テーブルから取得した値をkaeru_itemにセットする
+        app.selectAttendTime();
+
         kaeru_items.forEach(function (kaeru_item, index) {
             var onsListItem = '<ons-list-item >' +
                 '<div class="left">' +
@@ -206,8 +282,7 @@
 
     } else if (page.id === "kaeru-reg-page") {
         var viewToday = document.querySelector('#view_today').innerHTML;
-        viewToday = app.getToday();
-        document.querySelector('#view_today').innerHTML = viewToday;
+        document.querySelector('#view_today').innerHTML = app.getToday();
     }
 
   });
