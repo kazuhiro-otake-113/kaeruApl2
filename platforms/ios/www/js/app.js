@@ -13,8 +13,18 @@
   
   //ログイン
   app.login = function(){
-      client.login("aad").then(function(){ app.pagePush('menu.html'); }, authError);
+        //client.login("aad").then(function(){ app.pagePush('menu.html'); }, authError);
         //app.pagePush('menu.html');
+
+        //MobileApps接続
+        client = new WindowsAzure.MobileServiceClient(mAppUrl)
+            .then(function(){
+                ons.notification.alert('Azure接続成功!');
+                app.pagePush('menu.html');
+            },
+            function(){
+                ons.notification.alert('Azure接続エラー!');
+        });
   };
 
   //ログアウト
