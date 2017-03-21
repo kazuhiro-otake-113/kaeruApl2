@@ -9,12 +9,13 @@ var today;
 (function () {
     "use strict";
 
-    document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
+    //document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
+    document.addEventListener('deviceready', onDeviceReady, false);
 
     function onDeviceReady() {
         // Handle the Cordova pause and resume events
-        document.addEventListener( 'pause', onPause.bind( this ), false );
-        document.addEventListener( 'resume', onResume.bind( this ), false );
+        //document.addEventListener( 'pause', onPause.bind( this ), false );
+        //document.addEventListener( 'resume', onResume.bind( this ), false );
 
         // MobileApps接続
         client = new WindowsAzure.MobileServiceClient(mAppUrl)

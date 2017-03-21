@@ -13,8 +13,8 @@
   
   //ログイン
   app.login = function(){
-      //client.login("aad").then(function(){ app.pagePush('menu.html'); }, authError);
-      app.pagePush('menu.html');
+      client.login("aad").then(function(){ app.pagePush('menu.html'); }, authError);
+        //app.pagePush('menu.html');
   };
 
   //ログアウト

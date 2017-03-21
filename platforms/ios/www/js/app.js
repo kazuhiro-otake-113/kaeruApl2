@@ -1,14 +1,20 @@
 (function(){
   'use strict';
+  window.app = {};
+
   var page;
   var today;
 
-  window.app = {};
-
+  //対象ユーザ（今回は決め打ちで対応）
+  var targetUser = {
+      tUser: 'z2h3542',
+      tName: '大竹 一弘'
+  };
+  
   //ログイン
   app.login = function(){
-      //client.login("aad").then(function(){ app.pagePush('menu.html'); }, authError);
-      app.pagePush('menu.html');
+      client.login("aad").then(function(){ app.pagePush('menu.html'); }, authError);
+        //app.pagePush('menu.html');
   };
 
   //ログアウト
@@ -32,7 +38,7 @@
       var month = attendDate.getMonth()+1;
       var day = attendDate.getDate();
       var week = attendDate.getDay();
-      var youbi = new Array("日", "月", "火", "水", "木", "金", "土", "月");
+      var youbi = new Array("日", "月", "火", "水", "木", "金", "土");
 
       var hour = attendDate.getHours();
       var minute = attendDate.getMinutes();
@@ -86,6 +92,8 @@
 app.depTimeReg = function(){
     //画面入力値を取得
     var time = $('#depTime').val();
+    //基準日
+    var cDate = app.getToday();
 
     //登録・更新
     if(time === ""){
@@ -96,15 +104,6 @@ app.depTimeReg = function(){
         //テーブル参照
         var table = client.getTable('--操作対象テーブル--');
         
-        //対象ユーザ（今回は決め打ちで対応）
-        var targetUser = {
-            tUser: 'z2h3542',
-            tName: '大竹 一弘'
-        };
-
-        //登録、更新日付
-        var cDate = app.getToday();
-
         //テーブル登録 or 更新
         table
             .where({empId: targetUser.tUser,depDate: cDate })
@@ -147,6 +146,20 @@ app.depTimeReg = function(){
 
  app.selectAttendTime = function(){
     alert("selectAttend");
+/*
+    var table = client.getTable('--操作対象テーブル--');
+    table
+        .where({ depDate: cDate })
+        .read()
+        .then(app.setData(results),dataAccessfailure);
+*/
+};
+
+ app.setData = function(results){
+    //kaeru_itemsへ取得したレコードをセット
+    for(var i = 0; i < results.length; i++){
+        var kaeru_items = [{ emp_name: results[i].empName, emp_time: results[i].deptTime, emp_desc: 'ビジネスソリューション推進課' }];
+    }
  };
  
  app.dataAccessfailure = function(error){
