@@ -72,7 +72,8 @@
        } else if (index == 2) {
            app.alertMessage();
        } else if (index == 3) {
-           document.querySelector('#myNavigator').pushPage('kaeru_ref.html');
+           app.selectAttendTime();
+           //document.querySelector('#myNavigator').pushPage('kaeru_ref.html');
        } else if (index == 4) {
            document.querySelector('#myNavigator').pushPage('kintai_record.html');
        }
@@ -108,82 +109,78 @@ app.depTimeReg = function(){
     if(time === ""){
         ons.notification.alert('時間を設定してください');
     } else {
-        alert(time);
-        
         //テーブル参照
         var table = client.getTable('DepartureTime');
-        
-        alert('table:' + JSON.stringify(table));
-        alert('user:' + targetUser.tUser);
-        alert('depDate:' + cDate);
-      
-        table
-            .read()
-            .then(function(results){
-                alert('results:' + results);
-            },app.dataAccessfailure(error));
-    }
-        /*
-        //テーブル登録 or 更新
+                
         table
             .where({empId: targetUser.tUser,depDate: cDate })
             .read()
             .then(
                 //read成功時の処理
                 function(results){
+                    alert('results:' + JSON.stringify(results));
                     if(results.length > 0){
                         //データが存在する場合、更新
-                        alert('更新処理');
+                        alert('id:' + results[0].id);
                         var updateItem = {
                             id: results[0].id,
                             depTime: time
                         };
                         table
                             .update(updateItem)
-                            .done(
-                                function(){
-                                    //更新成功時、何もしない
+                            .done(function(updatedItem){
+                                var id = updatedItem.id;
+                                alert('更新成功 :' + id);
                                 },dataAccessfailure);
                     } else {
-                        alert('登録処理');
-                        //データが存在しない場合、登録
                         var insertItem = {
                             empId: targetUser.tUser,
+                            empName:targetUser.tName,
                             depTime: time,
                             depDate: cDate,
                             order: 9
                         };
                         table
-                            .insert()
-                            .done(
-                                function(){
-                                    //登録成功時、何もしない
-                                    alert('登録成功');
-                                },dataAccessfailure);
+                            .insert(insertItem)
+                            .done(function(insertedItem){
+                                var id = insertedItem.id;
+                                alert('登録成功 :' + id);
+                            },dataAccessfailure);
                     }
-                //read失敗時の処理
-            },dataAccessfailure);
-    }
-    */
+
+                })
+    }            
  };
 
  app.selectAttendTime = function(){
-    alert("selectAttend");
+     alert('selectAttendTime');
+    
     //検索日
     var cDate = app.getToday();
-        
+    alert(cDate);
+    
     var table = client.getTable('DepartureTime');
+    alert(table);    
     table
         .where({ depDate: cDate })
         .read()
-        .then(app.setData(results),dataAccessfailure);
-};
+        .then(
+            //read成功時の処理
+            function(results){
+                alert('results:' + JSON.stringify(results));
+                //app.setData(results);
+            },dataAccessfailure);
+
+    return results;
+ };
 
  app.setData = function(results){
     //kaeru_itemsへ取得したレコードをセット
-    for(var i = 0; i < results.length; i++){
-        var kaeru_items = [{ emp_name: results[i].empName, emp_time: results[i].deptTime, emp_desc: 'ビジネスソリューション推進課' }];
-    }
+    alert('setData results: ',JSON.stringify(results));
+
+    //for(var i = 0; i < results.length; i++){
+    //    var kaeru_items = [{ emp_name: results[i].empName, emp_time: results[i].deptTime, emp_desc: 'ビジネスソリューション推進課' }];
+    //}
  };
  
  app.dataAccessfailure = function(error){
@@ -294,9 +291,7 @@ app.depTimeReg = function(){
     } else if (page.id === "kaeru-ref-page") {
         var onsListContent = document.querySelector('#kaeru-list').innerHTML;
 
-        //テーブルから取得した値をkaeru_itemにセットする
-        app.selectAttendTime();
-
+/*
         kaeru_items.forEach(function (kaeru_item, index) {
             var onsListItem = '<ons-list-item >' +
                 '<div class="left">' +
@@ -314,8 +309,8 @@ app.depTimeReg = function(){
 
             onsListContent += onsListItem;
         });
-
-        document.querySelector('#kaeru-list').innerHTML = onsListContent;
+*/
+        //document.querySelector('#kaeru-list').innerHTML = app.selectAttendTime();
 
     } else if (page.id === "kaeru-reg-page") {
         var viewToday = document.querySelector('#view_today').innerHTML;
