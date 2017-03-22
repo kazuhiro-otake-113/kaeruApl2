@@ -13,24 +13,23 @@
   
   //ログイン
   app.login = function(){
-        //client.login("aad").then(function(){ app.pagePush('menu.html'); }, authError);
-        //app.pagePush('menu.html');
+  /*
+      client.login('aad').then(function () {
 
-        //MobileApps接続
-        client = new WindowsAzure.MobileServiceClient(mAppUrl)
-            .then(function(){
-                ons.notification.alert('Azure接続成功!');
-                app.pagePush('menu.html');
-            },
-            function(){
-                ons.notification.alert('Azure接続エラー!');
-        });
-  };
+         app.pagePush('menu.html');
+
+     }, app.authError());
+ */
+ app.pagePush('menu.html');
+ };
 
   //ログアウト
   app.logout = function(){
-      //client.logout().then(function(){ app.pagePop(); }, authError);
-      app.pagePop();
+      client.logout().then(function () {
+
+         app.pagePop();
+
+     }, app.authError());
   };
 
   app.authError = function() {
@@ -110,10 +109,21 @@ app.depTimeReg = function(){
         ons.notification.alert('時間を設定してください');
     } else {
         alert(time);
-        /*
-        //テーブル参照
-        var table = client.getTable('--操作対象テーブル--');
         
+        //テーブル参照
+        var table = client.getTable('DepartureTime');
+        
+        alert('table:' + JSON.stringify(table));
+        alert('user:' + targetUser.tUser);
+        alert('depDate:' + cDate);
+      
+        table
+            .read()
+            .then(function(results){
+                alert('results:' + results);
+            },app.dataAccessfailure(error));
+    }
+        /*
         //テーブル登録 or 更新
         table
             .where({empId: targetUser.tUser,depDate: cDate })
@@ -123,8 +133,9 @@ app.depTimeReg = function(){
                 function(results){
                     if(results.length > 0){
                         //データが存在する場合、更新
+                        alert('更新処理');
                         var updateItem = {
-                            id: '更新対象のID results[0].id',
+                            id: results[0].id,
                             depTime: time
                         };
                         table
@@ -134,35 +145,38 @@ app.depTimeReg = function(){
                                     //更新成功時、何もしない
                                 },dataAccessfailure);
                     } else {
+                        alert('登録処理');
                         //データが存在しない場合、登録
                         var insertItem = {
                             empId: targetUser.tUser,
                             depTime: time,
                             depDate: cDate,
-                            order: 1
+                            order: 9
                         };
                         table
                             .insert()
                             .done(
                                 function(){
                                     //登録成功時、何もしない
+                                    alert('登録成功');
                                 },dataAccessfailure);
                     }
                 //read失敗時の処理
             },dataAccessfailure);
-    */
     }
+    */
  };
 
  app.selectAttendTime = function(){
     alert("selectAttend");
-/*
-    var table = client.getTable('--操作対象テーブル--');
+    //検索日
+    var cDate = app.getToday();
+        
+    var table = client.getTable('DepartureTime');
     table
         .where({ depDate: cDate })
         .read()
         .then(app.setData(results),dataAccessfailure);
-*/
 };
 
  app.setData = function(results){
