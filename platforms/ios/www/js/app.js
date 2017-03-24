@@ -13,14 +13,13 @@
   
   //ログイン
   app.login = function(){
-  /*
-      client.login('aad').then(function () {
+     client.login('aad').then(function () {
 
          app.pagePush('menu.html');
 
      }, app.authError());
- */
- app.pagePush('menu.html');
+ 
+ //app.pagePush('menu.html');
  };
 
   //ログアウト
@@ -33,7 +32,7 @@
   };
 
   app.authError = function() {
-      ons.notification.alert('認証失敗!');
+      //ons.notification.alert('認証失敗!');
   };
 
   app.alertMessage = function(){
@@ -72,8 +71,7 @@
        } else if (index == 2) {
            app.alertMessage();
        } else if (index == 3) {
-           app.selectAttendTime();
-           //document.querySelector('#myNavigator').pushPage('kaeru_ref.html');
+           document.querySelector('#myNavigator').pushPage('kaeru_ref.html');
        } else if (index == 4) {
            document.querySelector('#myNavigator').pushPage('kintai_record.html');
        }
@@ -149,39 +147,83 @@ app.depTimeReg = function(){
                     }
 
                 })
-    }            
+    }
+    //参照画面へ遷移する
+    setTimeout(function(){
+        document.querySelector('#myNavigator').resetToPage('kaeru_ref.html');
+    },2000);         
  };
 
  app.selectAttendTime = function(){
-     alert('selectAttendTime');
-    
+     alert('select!');
     //検索日
     var cDate = app.getToday();
-    alert(cDate);
+    alert('cDate:' + cDate);
     
-    var table = client.getTable('DepartureTime');
-    alert(table);    
-    table
-        .where({ depDate: cDate })
-        .read()
-        .then(
-            //read成功時の処理
-            function(results){
-                alert('results:' + JSON.stringify(results));
-                //app.setData(results);
+        var table = client.getTable('DepartureTime');
+        alert('table:' + table);
+          table
+            .where({empId: targetUser.tUser,depDate: cDate })
+            .read()
+            .then(
+                //read成功時の処理
+                function(results){
+                    alert('results:' + JSON.stringify(results));
+                    if(results.length > 0){
+                        //データが存在する場合、更新
+                        alert('id:' + results[0].id);
+                        app.setData(results);
+                    }
+                },dataAccessfailure);
+/*
+        table
+            .where({depDate: cDate })
+            .read()
+            .then(
+                //read成功時の処理
+                function(results){
+                    alert('results:' + JSON.stringify(results));
+                    if(results.length > 0){
+                        app.setData(results);
+                    } else {
+                        ons.notification.alert('本日の退社時間の登録がまだありません');
+                    }    
+                    
             },dataAccessfailure);
-
-    return results;
- };
+*/ 
+};
 
  app.setData = function(results){
     //kaeru_itemsへ取得したレコードをセット
     alert('setData results: ',JSON.stringify(results));
+    
+    var kaeru_items;
+    for(var i = 0; i < results.length; i++){
+        var kaeru_items = [{ emp_name: results[i].empName, emp_time: results[i].depTime, emp_desc: 'ビジネスソリューション推進課' }];
+    }
 
-    //for(var i = 0; i < results.length; i++){
-    //    var kaeru_items = [{ emp_name: results[i].empName, emp_time: results[i].deptTime, emp_desc: 'ビジネスソリューション推進課' }];
-    //}
- };
+    //画面にkaeru_itemsの内容をリスト表示する
+        var onsListContent = document.querySelector('#kaeru-list').innerHTML;
+
+        kaeru_items.forEach(function (kaeru_item, index) {
+            var onsListItem = '<ons-list-item >' +
+                '<div class="left">' +
+                  '<div class="list__item__thumbnail picture"></div>' +
+                '</div>' +
+                '<div class="center">' +
+                  '<div class="list__item__title">' + kaeru_item.emp_name + '</div>' +
+                  '<div class="list__item__subtitle">' + kaeru_item.emp_desc + '</div>' +
+                '</div>' +
+                '<div class="right">' +
+                  '<span class="label">' + kaeru_item.emp_time + '</span>' +
+                '</div>' +
+              '</ons-list-item>'
+            ;
+
+            onsListContent += onsListItem;
+        });
+
+        document.querySelector('#kaeru-list').innerHTML = app.selectAttendTime(); };
  
  app.dataAccessfailure = function(error){
     ons.notification.alert('データ操作エラー');
@@ -214,7 +256,7 @@ app.depTimeReg = function(){
       desc: '今日も健康！打刻忘れず！'
    }
   ];
-
+/*
   var kaeru_items = [
     {
         emp_name: '宮崎　恵',
@@ -262,7 +304,7 @@ app.depTimeReg = function(){
         emp_desc: 'ビジネスソリューション推進課'
     }
   ];
-
+*/
   document.addEventListener('init', function(event) {
     page = event.target;
     if(page.id === "menu-page") {
@@ -289,29 +331,12 @@ app.depTimeReg = function(){
       document.querySelector('#main-list').innerHTML = onsListContent;
 
     } else if (page.id === "kaeru-ref-page") {
-        var onsListContent = document.querySelector('#kaeru-list').innerHTML;
+        setTimeout(function(){
+            app.selectAttendTime();
+        },2000);         
 
-/*
-        kaeru_items.forEach(function (kaeru_item, index) {
-            var onsListItem = '<ons-list-item >' +
-                '<div class="left">' +
-                  '<div class="list__item__thumbnail picture"></div>' +
-                '</div>' +
-                '<div class="center">' +
-                  '<div class="list__item__title">' + kaeru_item.emp_name + '</div>' +
-                  '<div class="list__item__subtitle">' + kaeru_item.emp_desc + '</div>' +
-                '</div>' +
-                '<div class="right">' +
-                  '<span class="label">' + kaeru_item.emp_time + '</span>' +
-                '</div>' +
-              '</ons-list-item>'
-            ;
-
-            onsListContent += onsListItem;
-        });
-*/
-        //document.querySelector('#kaeru-list').innerHTML = app.selectAttendTime();
-
+        
+    
     } else if (page.id === "kaeru-reg-page") {
         var viewToday = document.querySelector('#view_today').innerHTML;
         document.querySelector('#view_today').innerHTML = app.getToday();
