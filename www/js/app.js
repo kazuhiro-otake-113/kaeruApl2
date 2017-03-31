@@ -13,13 +13,14 @@
   
   //ログイン
   app.login = function(){
+      /*
      client.login('aad').then(function () {
 
          app.pagePush('menu.html');
 
      }, app.authError());
- 
- //app.pagePush('menu.html');
+ */
+ app.pagePush('menu.html');
  };
 
   //ログアウト
@@ -81,8 +82,15 @@
     document.querySelector('#myNavigator').pushPage(pageTo);
  };
 
- app.pagePop = function(){
-    document.querySelector('#myNavigator').popPage();
+ app.pagePop = function(toPage){
+     
+     if(toPage === 'dtime_ref.html'){
+        document.querySelector('#myNavigator').popPage();
+        app.selectAttendTime();
+     } else {
+        document.querySelector('#myNavigator').popPage();
+     }
+    
  };
 
  app.getToday = function(){
@@ -126,8 +134,8 @@ app.depTimeReg = function(){
                         };
                         table
                             .update(updateItem)
-                            .done(function(updatedItem){
-                                var id = updatedItem.id;
+                            .then(function(){
+                                //var id = updatedItem.id;
                                 alert('更新成功 :' + id);
                                 },dataAccessfailure);
                     } else {
@@ -149,53 +157,47 @@ app.depTimeReg = function(){
                 })
     }
     //参照画面へ遷移する
+    /*
     setTimeout(function(){
-        document.querySelector('#myNavigator').resetToPage('kaeru_ref.html');
-    },2000);         
+        //リセットでは、参照画面に戻った際にtoolbarからbackボタンが消えてしまう
+        //document.querySelector('#myNavigator').resetToPage('kaeru_ref.html');
+        app.pagePop('dtime_ref.html');
+    },5000);
+    */         
  };
 
+ app.depTimeReg2 = function(){
+    
+ }
+
+
  app.selectAttendTime = function(){
-     alert('select!');
+    alert('select!');
     //検索日
     var cDate = app.getToday();
-    alert('cDate:' + cDate);
+    //alert('cDate:' + cDate);
     
         var table = client.getTable('DepartureTime');
-        alert('table:' + table);
-          table
+        //alert('table:' + table);
+        table
             .where({empId: targetUser.tUser,depDate: cDate })
             .read()
             .then(
                 //read成功時の処理
                 function(results){
-                    alert('results:' + JSON.stringify(results));
+                    //alert('results:' + JSON.stringify(results));
                     if(results.length > 0){
-                        //データが存在する場合、更新
-                        alert('id:' + results[0].id);
-                        app.setData(results);
-                    }
-                },dataAccessfailure);
-/*
-        table
-            .where({depDate: cDate })
-            .read()
-            .then(
-                //read成功時の処理
-                function(results){
-                    alert('results:' + JSON.stringify(results));
-                    if(results.length > 0){
+                        //画面に取得したデータをセットする
                         app.setData(results);
                     } else {
-                        ons.notification.alert('本日の退社時間の登録がまだありません');
-                    }    
-                    
-            },dataAccessfailure);
-*/ 
+                        ons.notification.alert('本日の登録はありません');
+                    }
+                })
 };
 
  app.setData = function(results){
     //kaeru_itemsへ取得したレコードをセット
-    alert('setData results: ',JSON.stringify(results));
+    //alert('setData results: ',JSON.stringify(results));
     
     var kaeru_items;
     for(var i = 0; i < results.length; i++){
@@ -203,7 +205,8 @@ app.depTimeReg = function(){
     }
 
     //画面にkaeru_itemsの内容をリスト表示する
-        var onsListContent = document.querySelector('#kaeru-list').innerHTML;
+        //var onsListContent = document.querySelector('#kaeru-list').innerHTML;
+        var onsListContent;
 
         kaeru_items.forEach(function (kaeru_item, index) {
             var onsListItem = '<ons-list-item >' +
@@ -222,8 +225,7 @@ app.depTimeReg = function(){
 
             onsListContent += onsListItem;
         });
-
-        document.querySelector('#kaeru-list').innerHTML = app.selectAttendTime(); };
+        document.querySelector('#kaeru-list').innerHTML = onsListContent; };
  
  app.dataAccessfailure = function(error){
     ons.notification.alert('データ操作エラー');
@@ -331,12 +333,8 @@ app.depTimeReg = function(){
       document.querySelector('#main-list').innerHTML = onsListContent;
 
     } else if (page.id === "kaeru-ref-page") {
-        setTimeout(function(){
-            app.selectAttendTime();
-        },2000);         
+        app.selectAttendTime();
 
-        
-    
     } else if (page.id === "kaeru-reg-page") {
         var viewToday = document.querySelector('#view_today').innerHTML;
         document.querySelector('#view_today').innerHTML = app.getToday();
