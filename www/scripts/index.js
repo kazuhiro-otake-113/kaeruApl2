@@ -13,8 +13,8 @@ var authority = "https://login.windows.net/common";
 //var authority = "https://login.windows.net/97dbf009-f446-43ed-af21-8ac7a396314c";
 var redirectUri = "http://MyDirectorySearcherApp";
 var resourceUri = "https://graph.windows.net";
-//var clientId = "d893135a-9f2e-4f8d-a98b-9df007307509";
-var clientId = "a5d92493-ae5a-4a9f-bcbf-9f1d354067d3";
+var clientId = "d893135a-9f2e-4f8d-a98b-9df007307509";
+//var clientId = "a5d92493-ae5a-4a9f-bcbf-9f1d354067d3";
 var graphApiVersion = "2013-11-08";
 
 
