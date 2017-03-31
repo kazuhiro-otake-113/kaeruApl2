@@ -4,6 +4,10 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>ADALiOS.entitlements</key>
+		<data>
+		EPBc9ucoOocJK74Vd5JMemlEIXI=
+		</data>
 		<key>AppIcon29x29.png</key>
 		<data>
 		cgmW5EIQb6og6cYx6fBqazyHN4o=
@@ -98,7 +102,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		13Ha6MEoiwRE3xbLUM/iEmCnunQ=
+		aqqQ7LaQBEvXkeiU8ygQmXQKOxo=
 		</data>
 		<key>LaunchImage-568h@2x.png</key>
 		<data>
@@ -166,7 +170,7 @@
 		</data>
 		<key>config.xml</key>
 		<data>
-		N3j+inAHJTSTVIfeunKaXLwF4so=
+		Mzse3PcN4hw9+eBLi/OD67GTMnc=
 		</data>
 		<key>www/cordova-js-src/exec.js</key>
 		<data>
@@ -182,7 +186,7 @@
 		</data>
 		<key>www/cordova_plugins.js</key>
 		<data>
-		K/hZmtGtcFIh/NCCT9+YSCHnh7Q=
+		WgpMchmI9FBsL270+teRHd4YqD4=
 		</data>
 		<key>www/css/jquery.mobile-1.4.5.min.css</key>
 		<data>
@@ -1006,11 +1010,11 @@
 		</data>
 		<key>www/index.html</key>
 		<data>
-		AwCj1/ZxsCkRwl+djs5pCNCc72c=
+		ZAAxeejJnsZhbY8BwQc7Q6IbcIA=
 		</data>
 		<key>www/js/app.js</key>
 		<data>
-		PX8l2XVZ3Y6KrpL+/Pu6mDpa5Ts=
+		OTaQUUgDXQiengeYUnINuEj/HPY=
 		</data>
 		<key>www/js/jquery-3.1.1.min.js</key>
 		<data>
@@ -1172,6 +1176,38 @@
 		<data>
 		EfUzmAcUagDDJeG2yHQTy4FngxU=
 		</data>
+		<key>www/plugins/cordova-plugin-ms-adal/www/AuthenticationContext.js</key>
+		<data>
+		EBp2oSqJMSR1Wr4BBmT+EqRh8AY=
+		</data>
+		<key>www/plugins/cordova-plugin-ms-adal/www/AuthenticationResult.js</key>
+		<data>
+		GQH938yBV7xkqI4k6PZDQHLl740=
+		</data>
+		<key>www/plugins/cordova-plugin-ms-adal/www/AuthenticationSettings.js</key>
+		<data>
+		r7bFfelVhD96Zsv4dNBpV501BpI=
+		</data>
+		<key>www/plugins/cordova-plugin-ms-adal/www/CordovaBridge.js</key>
+		<data>
+		uPeewPDsduKclK797LZNAqausPE=
+		</data>
+		<key>www/plugins/cordova-plugin-ms-adal/www/TokenCache.js</key>
+		<data>
+		ijpgVc/h7re1pC3cNyx+8hsgm0o=
+		</data>
+		<key>www/plugins/cordova-plugin-ms-adal/www/TokenCacheItem.js</key>
+		<data>
+		1tw1KUXlYdHUMS5iRY+FnzRjcm4=
+		</data>
+		<key>www/plugins/cordova-plugin-ms-adal/www/UserInfo.js</key>
+		<data>
+		p+qDxC/c438D/cMOe/cCXLuTkRI=
+		</data>
+		<key>www/plugins/cordova-plugin-ms-adal/www/utility.js</key>
+		<data>
+		hMJtL3sbA8TSV/+jjIHDTUDLVnI=
+		</data>
 		<key>www/plugins/cordova-plugin-ms-azure-mobile-apps/www/MobileServices.Cordova.Ext.js</key>
 		<data>
 		S/gB8o/dmi+/zeGEhidW4NbLKqk=
@@ -1186,7 +1222,7 @@
 		</data>
 		<key>www/scripts/index.js</key>
 		<data>
-		yNMtW0PXF/XO8dOvxTyfKf2qGh0=
+		B/e4PHGWk2UxT98OI3pxrLoEOFE=
 		</data>
 		<key>www/scripts/platformOverrides.js</key>
 		<data>
@@ -1195,6 +1231,17 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>ADALiOS.entitlements</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			EPBc9ucoOocJK74Vd5JMemlEIXI=
+			</data>
+			<key>hash2</key>
+			<data>
+			Gp9U/zJCTsr0HzDzqMK3iCebCokfLwb2OWQ31O9OHxE=
+			</data>
+		</dict>
 		<key>AppIcon29x29.png</key>
 		<dict>
 			<key>hash</key>
@@ -1617,11 +1664,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			N3j+inAHJTSTVIfeunKaXLwF4so=
+			Mzse3PcN4hw9+eBLi/OD67GTMnc=
 			</data>
 			<key>hash2</key>
 			<data>
-			c+zIACeGoWZ+hx3Cxh2g2TCjrbtdvGf7D18skNJLAiY=
+			VtUEql7K7vRS7QbQBkBFzwZyEQxMnW2asqFERvPwKDI=
 			</data>
 		</dict>
 		<key>www/cordova-js-src/exec.js</key>
@@ -1661,11 +1708,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			K/hZmtGtcFIh/NCCT9+YSCHnh7Q=
+			WgpMchmI9FBsL270+teRHd4YqD4=
 			</data>
 			<key>hash2</key>
 			<data>
-			tOTPtfj/xidRfY6hIhU8R+cS4kb4mLiHng5aY3PMgP0=
+			3fV6hpq5DWsYwSI3ACPkGp9wGzhJro7zKgygdBzADSM=
 			</data>
 		</dict>
 		<key>www/css/jquery.mobile-1.4.5.min.css</key>
@@ -3927,22 +3974,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			AwCj1/ZxsCkRwl+djs5pCNCc72c=
+			ZAAxeejJnsZhbY8BwQc7Q6IbcIA=
 			</data>
 			<key>hash2</key>
 			<data>
-			PB5ojug1UKj7n3z96PjRVaFUkwTkR0Cx+/9ecpSuM1Q=
+			TkMzCoARja3ZiwDzJgmzIpnmPN5ybtje6g9bQEvDa14=
 			</data>
 		</dict>
 		<key>www/js/app.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			PX8l2XVZ3Y6KrpL+/Pu6mDpa5Ts=
+			OTaQUUgDXQiengeYUnINuEj/HPY=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZZr29YRUB4UN4aXYDT0GIitqCaP3Pu70y5NoWVGco6U=
+			OhGwIaQmwfOhde7l5zgPzti8ZrHurWFGSZBMi0/BFRE=
 			</data>
 		</dict>
 		<key>www/js/jquery-3.1.1.min.js</key>
@@ -4385,6 +4432,94 @@
 			CKuxAFfWQy3W36zfMt2eAc22BRQLnyWoCbuM+jlEBuk=
 			</data>
 		</dict>
+		<key>www/plugins/cordova-plugin-ms-adal/www/AuthenticationContext.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			EBp2oSqJMSR1Wr4BBmT+EqRh8AY=
+			</data>
+			<key>hash2</key>
+			<data>
+			VUPGNz9rsw7llaJYQu3xos1FsFLAfN9PipBMvPDilrA=
+			</data>
+		</dict>
+		<key>www/plugins/cordova-plugin-ms-adal/www/AuthenticationResult.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			GQH938yBV7xkqI4k6PZDQHLl740=
+			</data>
+			<key>hash2</key>
+			<data>
+			cDhTWLq/TOBgC57ksWkzCBcGw9ZKAOZyR9mhsqxdyAU=
+			</data>
+		</dict>
+		<key>www/plugins/cordova-plugin-ms-adal/www/AuthenticationSettings.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			r7bFfelVhD96Zsv4dNBpV501BpI=
+			</data>
+			<key>hash2</key>
+			<data>
+			XulEA1EFDLNMzyBMQKkDSBJPLx9JduHzvIr2l019Yms=
+			</data>
+		</dict>
+		<key>www/plugins/cordova-plugin-ms-adal/www/CordovaBridge.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			uPeewPDsduKclK797LZNAqausPE=
+			</data>
+			<key>hash2</key>
+			<data>
+			EAH4yLAhXN1F1HN4NlpDoKg3aEs+D3Ur/zJk1ApfRVA=
+			</data>
+		</dict>
+		<key>www/plugins/cordova-plugin-ms-adal/www/TokenCache.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ijpgVc/h7re1pC3cNyx+8hsgm0o=
+			</data>
+			<key>hash2</key>
+			<data>
+			EQgQPXl58yKj9nG+gg/CKilrSnUYPZGhgncRUVjJfPA=
+			</data>
+		</dict>
+		<key>www/plugins/cordova-plugin-ms-adal/www/TokenCacheItem.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			1tw1KUXlYdHUMS5iRY+FnzRjcm4=
+			</data>
+			<key>hash2</key>
+			<data>
+			XDkqZQOGNWbqMnJdk2K3H5ISzOF5TjXf8YMaGlc6EVg=
+			</data>
+		</dict>
+		<key>www/plugins/cordova-plugin-ms-adal/www/UserInfo.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			p+qDxC/c438D/cMOe/cCXLuTkRI=
+			</data>
+			<key>hash2</key>
+			<data>
+			+iML7Gig+GJ2Uox+kkaMhepATfu+kZ4lEwrTab0F974=
+			</data>
+		</dict>
+		<key>www/plugins/cordova-plugin-ms-adal/www/utility.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			hMJtL3sbA8TSV/+jjIHDTUDLVnI=
+			</data>
+			<key>hash2</key>
+			<data>
+			muxOtE02bHKLDQ1cbjqiCj+ST/hRurFHZxSusNevHBU=
+			</data>
+		</dict>
 		<key>www/plugins/cordova-plugin-ms-azure-mobile-apps/www/MobileServices.Cordova.Ext.js</key>
 		<dict>
 			<key>hash</key>
@@ -4422,11 +4557,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			yNMtW0PXF/XO8dOvxTyfKf2qGh0=
+			B/e4PHGWk2UxT98OI3pxrLoEOFE=
 			</data>
 			<key>hash2</key>
 			<data>
-			cBBwXyixz0IAs3yr+R9O8mJjU73lDjkOwvj24UjLrzw=
+			GnzDjevu7i2mqqmt9UOCsC+ci7j5rpAWHXqjV2OPQmo=
 			</data>
 		</dict>
 		<key>www/scripts/platformOverrides.js</key>

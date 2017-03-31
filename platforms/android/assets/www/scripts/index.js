@@ -2,9 +2,11 @@
 // http://go.microsoft.com/fwlink/?LinkID=397704
 // To debug code on page load in Ripple or on Android devices/emulators: launch your app, set breakpoints,
 // and then run "window.location.reload()" in the JavaScript Console.
+var mAppUrl = "https://mobile-otk220.azurewebsites.net/";
+var client;
+
 (function () {
     "use strict";
-    var client;
 
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
 
@@ -13,10 +15,10 @@
         document.addEventListener( 'pause', onPause.bind( this ), false );
         document.addEventListener( 'resume', onResume.bind( this ), false );
 
-        // MobileApps�ւ̐ڑ�
-        client = new WindowsAzure.MobileServiceClient('https://mobile-otk220.azurewebsites.net');
-    };
-
+        // MobileApps接続
+        client = new WindowsAzure.MobileServiceClient(mAppUrl);
+    }
+         
     function onPause() {
         // TODO: This application has been suspended. Save application state here.
     };

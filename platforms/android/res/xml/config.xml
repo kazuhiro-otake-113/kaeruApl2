@@ -9,6 +9,13 @@
     <feature name="Geolocation">
         <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
     </feature>
+    <feature name="ADALProxy">
+        <param name="android-package" value="com.microsoft.aad.adal.CordovaAdalPlugin" />
+    </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
     <name>Onsen_UI_Navigation1</name>
     <description>Onsen_UI_Navigation1 project to create fancy user interfaces for hybrid mobile applications. It uses uses Apache Cordova to help you build an app that targets multiple mobile platforms: Android, iOS, Windows, and Windows Phone.</description>
     <author email="dev@onsen.io" href="http://onsen.io">Onsen UI Team </author>

@@ -13,6 +13,12 @@
         },
         "cordova-plugin-ms-azure-mobile-apps": {
             "PACKAGE_NAME": "io.onsen.sampleapp"
+        },
+        "cordova-plugin-ms-adal": {
+            "PACKAGE_NAME": "io.onsen.sampleapp"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "io.onsen.sampleapp"
         }
     },
     "dependent_plugins": {

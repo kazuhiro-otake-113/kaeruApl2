@@ -19,6 +19,10 @@
                         {
                             "xml": "<feature name=\"SQLitePlugin\"><param name=\"ios-package\" value=\"SQLitePlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"ADALProxy\"><param name=\"ios-package\" value=\"CordovaAdalPlugin\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -28,6 +32,38 @@
                     "NSLocationWhenInUseUsageDescription": [
                         {
                             "xml": "<string> </string>",
+                            "count": 1
+                        }
+                    ],
+                    "LSApplicationQueriesSchemes": [
+                        {
+                            "xml": "<array><string>msauth</string></array>",
+                            "count": 1
+                        }
+                    ],
+                    "CFBundleURLTypes": [
+                        {
+                            "xml": "<array><dict><key>CFBundleTypeRole</key><string>Editor</string><key>CFBundleURLName</key><string>$(CFBundleIdentifier)</string><key>CFBundleURLSchemes</key><array><string>x-msauth-$(CFBundleIdentifier:rfc1034identifier)</string></array></dict></array>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "*-Debug.plist": {
+                "parents": {
+                    "keychain-access-groups": [
+                        {
+                            "xml": "<array><string>$(AppIdentifierPrefix)com.microsoft.adalcache</string></array>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "*-Release.plist": {
+                "parents": {
+                    "keychain-access-groups": [
+                        {
+                            "xml": "<array><string>$(AppIdentifierPrefix)com.microsoft.adalcache</string></array>",
                             "count": 1
                         }
                     ]
@@ -50,6 +86,12 @@
             "PACKAGE_NAME": "io.onsen.sampleapp"
         },
         "cordova-plugin-ms-azure-mobile-apps": {
+            "PACKAGE_NAME": "io.onsen.sampleapp"
+        },
+        "cordova-plugin-ms-adal": {
+            "PACKAGE_NAME": "io.onsen.sampleapp"
+        },
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "io.onsen.sampleapp"
         }
     },
@@ -117,6 +159,53 @@
             "clobbers": [
                 "WindowsAzure"
             ]
+        },
+        {
+            "id": "cordova-plugin-ms-adal.utility",
+            "file": "plugins/cordova-plugin-ms-adal/www/utility.js",
+            "pluginId": "cordova-plugin-ms-adal",
+            "runs": true
+        },
+        {
+            "id": "cordova-plugin-ms-adal.AuthenticationContext",
+            "file": "plugins/cordova-plugin-ms-adal/www/AuthenticationContext.js",
+            "pluginId": "cordova-plugin-ms-adal",
+            "clobbers": [
+                "Microsoft.ADAL.AuthenticationContext"
+            ]
+        },
+        {
+            "id": "cordova-plugin-ms-adal.CordovaBridge",
+            "file": "plugins/cordova-plugin-ms-adal/www/CordovaBridge.js",
+            "pluginId": "cordova-plugin-ms-adal"
+        },
+        {
+            "id": "cordova-plugin-ms-adal.AuthenticationResult",
+            "file": "plugins/cordova-plugin-ms-adal/www/AuthenticationResult.js",
+            "pluginId": "cordova-plugin-ms-adal"
+        },
+        {
+            "id": "cordova-plugin-ms-adal.TokenCache",
+            "file": "plugins/cordova-plugin-ms-adal/www/TokenCache.js",
+            "pluginId": "cordova-plugin-ms-adal"
+        },
+        {
+            "id": "cordova-plugin-ms-adal.TokenCacheItem",
+            "file": "plugins/cordova-plugin-ms-adal/www/TokenCacheItem.js",
+            "pluginId": "cordova-plugin-ms-adal"
+        },
+        {
+            "id": "cordova-plugin-ms-adal.UserInfo",
+            "file": "plugins/cordova-plugin-ms-adal/www/UserInfo.js",
+            "pluginId": "cordova-plugin-ms-adal"
+        },
+        {
+            "id": "cordova-plugin-ms-adal.AuthenticationSettings",
+            "file": "plugins/cordova-plugin-ms-adal/www/AuthenticationSettings.js",
+            "pluginId": "cordova-plugin-ms-adal",
+            "clobbers": [
+                "Microsoft.ADAL.AuthenticationSettings"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -124,6 +213,8 @@
         "cordova-plugin-geolocation": "2.4.2",
         "cordova-plugin-inappbrowser": "1.5.0",
         "cordova-sqlite-storage": "1.4.8",
-        "cordova-plugin-ms-azure-mobile-apps": "2.0.0"
+        "cordova-plugin-ms-azure-mobile-apps": "2.0.0",
+        "cordova-plugin-ms-adal": "0.9.0",
+        "cordova-plugin-whitelist": "1.3.2"
     }
 }

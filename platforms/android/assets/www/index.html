@@ -1,12 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="mobile-web-app-capable" content="yes" />
+  <!--
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://login.windows.net https://mobile-otk220.azurewebsites.net; style-src 'self'">
+  -->
 
   <!-- JS dependencies (order matters!) -->
-  <script src="scripts/platformOverrides.js"></script>
+  <script srcS="scripts/platformOverrides.js"></script>
   <script src="lib/onsen/js/onsenui.js"></script>
 
   <!-- CSS dependencies -->
@@ -15,26 +18,25 @@
 
   <title>Onsen UI Navigation</title>
 
-  <!-- App init -->
-  <script src="js/app.js"></script>
-
   <style>
     .picture {
       background-color: #ccc;
       width: 50px;
       height: 50px;
     }
-
     .label {
-      font-size: 12px;
+      font-size: 18px;
       color: #999;
       float: right;
       padding-top: 10px;
+      width:55px;
     }
-
     #main-list div.right,
     #detail-list div.right {
       display: inline;
+    }
+    #timeInput {
+        text-align: center;
     }
   </style>
 
@@ -44,20 +46,50 @@
   <!-- Cordova reference -->
   <script src="cordova.js"></script>
   <script src="scripts/index.js"></script>
-  <!-- -->
+  <script src="js/app.js"></script>
+  <!-- jQuery Timepicker -->
+  <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="js/jquery.timepicker.min.js"></script>
+  <script type="text/javascript" src="js/jquery.timepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css" />
+  
+  <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <script src="js/jquery.mobile-1.4.5.min.js"></script>
 
-  <ons-navigator id="myNavigator">
-    <ons-page id="menu-page">
-      <ons-toolbar>
-        <div class="center">メニュー</div>
-      </ons-toolbar>
+    <!-- トップ　ページ　-->
+    <ons-navigator id="myNavigator">
+            <ons-page id="top-page">
+                <div style="text-align: center">
+                    <h2>デモアプリケーション</h2>
+                    <img src="images/CTC_logo.png" width="250" height="150" />
+                    <br><br><br>
+                    <!-- <ons-button modifier="cta" onclick="app.pagePush('menu.html')"> -->
+                    <ons-button modifier="cta" onclick="app.login()"> 
+                        ユーザ認証する
+                    </ons-button>
+                </div>
+            </ons-page>
+    </ons-navigator>
 
-      <ons-list id="main-list">
-        <!-- This list will be filled on page initialization -->
-      </ons-list>
-    </ons-page>
-  </ons-navigator>
+    <!-- メニュー　ページ　-->
+    <ons-template id="menu.html">
+        <ons-page id="menu-page">
+            <ons-toolbar>
+                <div class="center">メニュー</div>
+                <div class="right">
+                    <ons-toolbar-button onclick="app.logout()">
+                        <ons-icon icon="sign-out">ﾛｸﾞｱｳﾄ</ons-icon>
+                    </ons-toolbar-button>
+                </div>
+            </ons-toolbar>
+            <ons-list id="main-list">
+                <!-- This list will be filled on page initialization -->
+            </ons-list>
+        </ons-page>
+    </ons-template>
 
+    <!-- CTC企業理念　ページ -->
     <ons-template id="ctc_phiro.html">
         <ons-page id="ctc_phiro-page">
             <ons-toolbar>
@@ -66,29 +98,31 @@
                 </div>
                 <div class="center">CTC企業理念</div>
             </ons-toolbar>
-            <img src="images/CTC_rinen.PNG" algin="center" width="381" height="399">
+            <img src="images/CTC_rinen.PNG" algin="center" width="370" height="410">
         </ons-page>
     </ons-template>
 
+    <!-- 従業員支援プログラム　ページ -->
     <ons-template id="emp_support.html">
          <ons-page id="emp_support-page">
 　          <ons-toolbar>
-                <div class="left">
-                    <ons-back-button>Back</ons-back-button>
-                </div>
+                <div class="left"><ons-back-button>Back</ons-back-button></div>
                 <div class="center">従業員支援プログラム</div>
             </ons-toolbar>
          </ons-page>
     </ons-template>
 
+    <!-- 何時にカエル　参照ページ -->
     <ons-template id="kaeru_ref.html">
-        <ons-page id="kaeru-page">
-            <ons-toolbar>
-                <div class="left">
-                    
-                    <ons-back-button>Back</ons-back-button>
-                </div>
+        <ons-page id="kaeru-ref-page">
+　          <ons-toolbar>
+                <div class="left"><ons-back-button>Back</ons-back-button></div>
                 <div class="center">何時にカエル</div>
+                <div class="right">
+                    <ons-toolbar-button onclick="app.pagePush('kaeru_reg.html')">
+                        <ons-icon icon="ion-compose"><font size="3"> 登録</font></ons-icon>
+                    </ons-toolbar-button>
+                </div>
             </ons-toolbar>
             <ons-list id="kaeru-list">
                 <!-- This list will be filled on page initialization -->
@@ -96,12 +130,44 @@
         </ons-page>
     </ons-template>
 
+    <!-- 何時にカエル　登録ページ -->
+    <ons-template id="kaeru_reg.html">
+        <ons-page id="kaeru-reg-page">
+　          <ons-toolbar>
+                <div class="left"><ons-back-button>Back</ons-back-button></div>
+                <div class="center">カエル時間を登録</div>
+            </ons-toolbar>
+            <p id="view_today" style="text-align:center"></p>
+            <div id="timeInput">
+                <form>
+                    <label for="time">退社予定時間</label><br>
+                    <input type="time" size="30" data-clear-btn="true" name="depTime" id="depTime" value="">
+                </form>
+            </div>
+            
+            <br>
+            <div class="btn" style="text-align:center">
+                <ons-button modifier="cta" onclick="app.depTimeReg()">登録</ons-button>
+            </div>
+            <!--
+            ★Timepickerは使えない・・・
+            <div class="example">
+                <script>
+                    $(function(){
+                      $('#attendTime').timepicker({'timeFormat':'H:i','scrollDefault':'now'});
+                      });
+                </script>
+                <p><input id="attendTime" type="text" class="time" /></p>
+            </div>
+            -->
+        </ons-page>
+    </ons-template>
+
+    <!-- 出退勤　ページ -->
     <ons-template id="kintai_record.html">
         <ons-page id="kintai_record-page">
             <ons-toolbar>
-                <div class="left">
-                    <ons-back-button>Back</ons-back-button>
-                </div>
+                <div class="left"><ons-back-button>Back</ons-back-button></div>
                 <div class="center">出退勤</div>
             </ons-toolbar>
             <br /><br /><br />

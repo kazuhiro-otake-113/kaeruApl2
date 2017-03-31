@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
@@ -19,6 +18,10 @@
 		A045779AAC764BF1A50396B1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE87DF0FD9A84348805709A1 /* CoreLocation.framework */; };
 		A9307A982D29490D9A900F7F /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 084165B30363460D959EE385 /* CDVInAppBrowser.m */; };
 		E5B4D176E7974ED981F343FD /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1B989E71D044CBA0DBE4ED /* CDVLocation.m */; };
+		B46C826B5D18420982ADA8BE /* CordovaAdalPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBA26F727444A7C9D1918D6 /* CordovaAdalPlugin.m */; };
+		7169132C70284096A238DE12 /* CordovaAdalUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 156C61D2A58E4615A9473B9D /* CordovaAdalUtils.m */; };
+		9F65CFD5A98B45C79FF80334 /* ADALiOS.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 69415B5854374052A28AB5DB /* ADALiOS.entitlements */; };
+		DEB42D6CA61D4DFE8956558D /* ADAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F902C0A7BCC5497EAC8BCC4C /* ADAL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,12 @@
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = Onsen_UI_Navigation1/config.xml; sourceTree = "<group>"; };
+		4FBA26F727444A7C9D1918D6 /* CordovaAdalPlugin.m */ = {isa = PBXFileReference; name = "CordovaAdalPlugin.m"; path = "cordova-plugin-ms-adal/CordovaAdalPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		156C61D2A58E4615A9473B9D /* CordovaAdalUtils.m */ = {isa = PBXFileReference; name = "CordovaAdalUtils.m"; path = "cordova-plugin-ms-adal/CordovaAdalUtils.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		BD6038507BFC4DC196DFE3EE /* CordovaAdalPlugin.h */ = {isa = PBXFileReference; name = "CordovaAdalPlugin.h"; path = "cordova-plugin-ms-adal/CordovaAdalPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		7C9D73A45A444E9EB6FC74EA /* CordovaAdalUtils.h */ = {isa = PBXFileReference; name = "CordovaAdalUtils.h"; path = "cordova-plugin-ms-adal/CordovaAdalUtils.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		69415B5854374052A28AB5DB /* ADALiOS.entitlements */ = {isa = PBXFileReference; name = "ADALiOS.entitlements"; path = "ADALiOS.entitlements"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F902C0A7BCC5497EAC8BCC4C /* ADAL.framework */ = {isa = PBXFileReference; name = "ADAL.framework"; path = "Onsen_UI_Navigation1/Plugins/cordova-plugin-ms-adal/ADAL.framework"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +86,7 @@
 			files = (
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 				A045779AAC764BF1A50396B1 /* CoreLocation.framework in Frameworks */,
+				DEB42D6CA61D4DFE8956558D /* ADAL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +149,7 @@
 				3047A50E1AB8057F00498E2A /* config */,
 				8D1107310486CEB800E47090 /* Onsen_UI_Navigation1-Info.plist */,
 				6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */,
+				69415B5854374052A28AB5DB /* ADALiOS.entitlements */,
 			);
 			name = Resources;
 			path = Onsen_UI_Navigation1/Resources;
@@ -148,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				BE87DF0FD9A84348805709A1 /* CoreLocation.framework */,
+				F902C0A7BCC5497EAC8BCC4C /* ADAL.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -181,6 +193,10 @@
 				1040B3486036471AA592DE6F /* sqlite3.c */,
 				C969E3860C184F93BCCB9552 /* SQLitePlugin.h */,
 				A12C8183060341EB8E664D21 /* sqlite3.h */,
+				4FBA26F727444A7C9D1918D6 /* CordovaAdalPlugin.m */,
+				156C61D2A58E4615A9473B9D /* CordovaAdalUtils.m */,
+				BD6038507BFC4DC196DFE3EE /* CordovaAdalPlugin.h */,
+				7C9D73A45A444E9EB6FC74EA /* CordovaAdalUtils.h */,
 			);
 			name = Plugins;
 			path = Onsen_UI_Navigation1/Plugins;
@@ -270,6 +286,7 @@
 				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
 				0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */,
 				6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */,
+				9F65CFD5A98B45C79FF80334 /* ADALiOS.entitlements in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +322,8 @@
 				A9307A982D29490D9A900F7F /* CDVInAppBrowser.m in Sources */,
 				6E20D42923044021AFADDF0D /* SQLitePlugin.m in Sources */,
 				54AC6D13E97449E8BE742918 /* sqlite3.c in Sources */,
+				B46C826B5D18420982ADA8BE /* CordovaAdalPlugin.m in Sources */,
+				7169132C70284096A238DE12 /* CordovaAdalUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +363,11 @@
 				PRODUCT_NAME = Onsen_UI_Navigation1;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Onsen_UI_Navigation1/Plugins/cordova-plugin-ms-adal\"",
+				);
+				CODE_SIGN_ENTITLEMENTS = "Onsen_UI_Navigation1/Resources/ADALiOS.entitlements";
 			};
 			name = Debug;
 		};
@@ -370,6 +394,11 @@
 				PRODUCT_NAME = Onsen_UI_Navigation1;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Onsen_UI_Navigation1/Plugins/cordova-plugin-ms-adal\"",
+				);
+				CODE_SIGN_ENTITLEMENTS = "Onsen_UI_Navigation1/Resources/ADALiOS.entitlements";
 			};
 			name = Release;
 		};
